@@ -3,12 +3,12 @@ var express = require("express"),
     bodyParser = require("body-parser"),
     mongoose = require('mongoose'),
     passport = require("passport"),
-    methodOverride=require("method-override");
-    LocalStrategy = require("passport-local"),
+    methodOverride = require("method-override");
+LocalStrategy = require("passport-local"),
     Campground = require("./models/campground"),
     Comment = require("./models/comment"),
     User = require("./models/user"),
-        flash=require("connect-flash"),
+    flash = require("connect-flash"),
     seedDB = require("./seeds");
 var commentRoutes = require("./routes/comments"),
     campgroundRoutes = require("./routes/campgrounds"),
@@ -45,8 +45,8 @@ passport.deserializeUser(User.deserializeUser());
 // -----------------------------------------
 app.use(function (req, res, next) {
     res.locals.currentUser = req.user;
-    res.locals.error=req.flash("error");
-    res.locals.success=req.flash("success");
+    res.locals.error = req.flash("error");
+    res.locals.success = req.flash("success");
     next();
 }); //pass currentUser to every routes
 
@@ -55,5 +55,5 @@ app.use(campgroundRoutes);
 app.use(commentRoutes);
 app.set("view engine", "ejs");
 console.log("hello");
-
-app.listen(3000, () => console.log("Server running at port 3000"));
+const port = process.env.PORT || 3000;
+app.listen(port, () => console.log(`Listening on port: ${port}`));
