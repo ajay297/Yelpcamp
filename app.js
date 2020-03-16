@@ -13,7 +13,7 @@ LocalStrategy = require("passport-local"),
 var commentRoutes = require("./routes/comments"),
     campgroundRoutes = require("./routes/campgrounds"),
     indexRoutes = require("./routes/index");
-mongoose.connect("mongodb://localhost/yelp_campv12");
+mongoose.connect("mongodb+srv://ajay_3011:1234@cluster0-vwlwb.mongodb.net/test?retryWrites=true&w=majority", { useNewUrlParser: true });
 app.use(express.static(__dirname + "/public"));
 // seedDB();
 
@@ -57,3 +57,6 @@ app.set("view engine", "ejs");
 console.log("hello");
 const port = process.env.PORT || 3000;
 app.listen(port, () => console.log(`Listening on port: ${port}`));
+
+
+
